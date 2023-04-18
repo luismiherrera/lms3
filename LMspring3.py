@@ -1,6 +1,6 @@
 #########################################################################
 #                                                                       #
-#                            LMspring 3                                 #
+#                             LMspring                                  #
 #                        by Luismi Herrera.                             #
 #                     Twitter: @luismiherrera                           #
 #                                                                       #
