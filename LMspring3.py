@@ -449,25 +449,24 @@ class LMspring(object):
         userLMspringDir = cmds.internalVar(userScriptDir=True)+('LMspring3/')
         newVersionFileLocation = userLMspringDir+'LMspring3.py'
         errorMessage ='''There was an error trying to install the latest version.
-                        Download latest version from https://luismiherrera.gumroad.com/l/LMspring3
-                        and install it manually.'''
+                        Please, download latest version of LMspring from 
+                        https://luismiherrera.gumroad.com/'''
         try:
             fpy = urlopen(urlNewVersion)
             with open(newVersionFileLocation,'wb') as f:
                 f.write(fpy.read())
                 f.close()
-            result = cmds.confirmDialog(title='Updater', message='LMspring has been updated!. Please, RELOAD LMspring 3.', icon='warning',parent='LMspringWindow')
+            result = cmds.confirmDialog(title='Updater', message='LMspring has been updated!. Please, RELOAD LMspring.', icon='warning',parent='LMspringWindow')
             if (result=='Confirm'):
                 self.closeUI()
+            cmds.warning('LMspring Updated')
+        
         except HTTPError as e:
             print(("HTTP Error:", e.code))
             cmds.confirmDialog(title='Updater', message=errorMessage, icon='critical',parent='LMspringWindow')
         except URLError as e:
             print(("URL Error:", e.reason))
             cmds.confirmDialog(title='Updater', message=errorMessage, icon='critical',parent='LMspringWindow')
-
-        print('LMspring 3 Updated')
-
 
     def twitterLink(self, *args):
         cmds.showHelp( 'https://twitter.com/luismiherrera', absolute=True )
