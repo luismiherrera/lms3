@@ -445,18 +445,16 @@ class LMspring(object):
 
     def updateLMspring3(self):
         print('Updating LMspring3!')
-        urlNewVersion = 'https://github.com/luismiherrera/lms3/raw/master/LMspring3.py'
+        urlNewVersion = 'https://raw.githubusercontent.com/luismiherrera/lms3/main/LMspring3.py'
         userLMspringDir = cmds.internalVar(userScriptDir=True)+('LMspring3/')
         newVersionFileLocation = userLMspringDir+'LMspring3.py'
-        errorMessage ='''There was an error trying to install the latest version.
-                        Please, download latest version of LMspring from 
-                        https://luismiherrera.gumroad.com/'''
+        errorMessage ='''There was an error trying to install the latest version. Please, download latest version of LMspring from https://luismiherrera.gumroad.com/'''
         try:
             fpy = urlopen(urlNewVersion)
             with open(newVersionFileLocation,'wb') as f:
                 f.write(fpy.read())
                 f.close()
-            result = cmds.confirmDialog(title='Updater', message='LMspring has been updated!. Please, RELOAD LMspring.', icon='warning',parent='LMspringWindow')
+            result = cmds.confirmDialog(title='Updater', message='LMspring has been updated!. Please, RELOAD Maya.', icon='warning',parent='LMspringWindow')
             if (result=='Confirm'):
                 self.closeUI()
             cmds.warning('LMspring Updated')
@@ -606,10 +604,3 @@ class LMspring(object):
 
 lmspring = LMspring()
 lmspring.showUI()
-
-'''
-TO DO
-
-Naming anim layers with the name of the object
-
-'''
